@@ -12,15 +12,47 @@ namespace ChangeMaker
         {
             //calling the function with $4.19.  
             //Notice that when using the decimal format you must end numbers with an 'm'
-            ChangeAmount(4.19m);
+            ChangeAmount(4.17m);
+            Console.ReadKey();
         }
 
-        public static Change ChangeAmount(decimal amount) 
+        public static Change ChangeAmount(decimal amount)
         {
             //this is our object that will hold the data of how many coins of each type to return
             Change amountAsChange = new Change();
-           
+
+            decimal tempAmount = amount;
+
+            while (tempAmount >= 0.25m)
+            {
+                amountAsChange.Quarters++;
+                tempAmount -= 0.25m;
+            }
+
+            while (tempAmount >= 0.10m)
+            {
+                amountAsChange.Dimes++;
+                tempAmount -= 0.10m;
+            }
+
+            while (tempAmount >= 0.05m)
+            {
+                amountAsChange.Nickles++;
+                tempAmount -= 0.05m;
+            }
+
+            while (tempAmount >= 0.01m)
+            {
+                amountAsChange.Pennies++;
+                tempAmount -= 0.01m;
+            }
+
             //TODO: Fill in the the code to make this function work
+            Console.WriteLine("Amount: $" + amount);
+            Console.WriteLine("Quarters: " + amountAsChange.Quarters);
+            Console.WriteLine("Dimes: " + amountAsChange.Dimes);
+            Console.WriteLine("Nickels: " + amountAsChange.Nickles);
+            Console.WriteLine("Pennies: " + amountAsChange.Pennies);
 
             //return our Change Object
             return amountAsChange;
@@ -54,22 +86,38 @@ namespace ChangeMaker
         /// <summary>
         /// This is property to hold the number of Quarters to be returned as change
         /// </summary>
-        public int Quarters { get; set; }
+        public int Quarters
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// This is property to hold the number of Dimes to be returned as change
         /// </summary>
-        public int Dimes { get; set; }
+        public int Dimes
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// This is property to hold the number of Nickles to be returned as change
         /// </summary>
-        public int Nickles { get; set; }
+        public int Nickles
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// This is property to hold the number of Pennies to be returned as change
         /// </summary>public int Nickles { get; set; }
-        public int Pennies { get; set; }
+        public int Pennies
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// This is a constructor, it initializes a new instance of the class (called an object).  This sets it's default values.
