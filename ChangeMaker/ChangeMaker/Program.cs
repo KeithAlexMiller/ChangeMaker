@@ -21,29 +21,46 @@ namespace ChangeMaker
             //this is our object that will hold the data of how many coins of each type to return
             Change amountAsChange = new Change();
 
+            //track temp amount as coins are collected
             decimal tempAmount = amount;
 
+            //check if tempAmount has at least $0.25
             while (tempAmount >= 0.25m)
             {
+                //add 1 quarter
                 amountAsChange.Quarters++;
+
+                //subtract $0.25 from tempAmount
                 tempAmount -= 0.25m;
             }
 
+            //check if tempAmount has at least $0.10
             while (tempAmount >= 0.10m)
             {
+                //add 1 dime
                 amountAsChange.Dimes++;
+
+                //subtract $0.10 from tempAmount
                 tempAmount -= 0.10m;
             }
 
+            //check if tempAmount has at least $0.05
             while (tempAmount >= 0.05m)
             {
+                //add 1 nickel
                 amountAsChange.Nickles++;
+
+                //subtract $0.05
                 tempAmount -= 0.05m;
             }
 
+            //check if tempAmount has at least $0.01
             while (tempAmount >= 0.01m)
             {
+                //add 1 penny
                 amountAsChange.Pennies++;
+
+                //subtract $0.01
                 tempAmount -= 0.01m;
             }
 
